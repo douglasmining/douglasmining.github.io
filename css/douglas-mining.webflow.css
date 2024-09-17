@@ -36,8 +36,8 @@
 }
 
 .footer {
-  grid-column-gap: 235px;
-  grid-row-gap: 235px;
+  grid-column-gap: 60px;
+  grid-row-gap: 60px;
   background-color: #000;
   justify-content: center;
   align-items: center;
@@ -49,7 +49,7 @@
   grid-column-gap: 80px;
   grid-row-gap: 80px;
   width: 100%;
-  max-width: 657px;
+  max-width: 800px;
 }
 
 .paragraph {
@@ -76,7 +76,7 @@
 }
 
 .image {
-  width: 100%;
+  width: 30%;
 }
 
 .flex-block-4 {
@@ -900,12 +900,14 @@
 .flex-block-4x {
   grid-column-gap: 8px;
   grid-row-gap: 8px;
+  cursor: pointer;
   background-color: #0360ae;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 61px;
   padding: 16px 32px;
+  text-decoration: none;
 }
 
 .flex-block-14 {
@@ -1164,10 +1166,10 @@
 }
 
 .tab-pane-tab-1 {
-  background-image: url('../images/explore.png');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: linear-gradient(#00000080, #00000080), url('../images/Features-section1.png');
+  background-position: 0 0, 50%;
+  background-repeat: repeat, no-repeat;
+  background-size: auto, cover;
   width: 100%;
   max-width: none;
   height: 571px;
@@ -1218,6 +1220,7 @@
   grid-row-gap: 8px;
   justify-content: flex-start;
   align-items: center;
+  text-decoration: none;
   display: flex;
 }
 
@@ -1236,10 +1239,10 @@
 }
 
 .tab-pane-tab-2 {
-  background-image: url('../images/Military.png');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: linear-gradient(#00000080, #00000080), url('../images/blurred-military-1.png');
+  background-position: 0 0, 50%;
+  background-repeat: repeat, no-repeat;
+  background-size: auto, cover;
   width: 100%;
   height: 571px;
   padding: 76.5px 30% 76.5px 80px;
@@ -1256,20 +1259,20 @@
 }
 
 .tab-pane-tab-3 {
-  background-image: url('../images/Industrial.png');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: linear-gradient(#00000080, #00000080), url('../images/blurred_industrial.png');
+  background-position: 0 0, 50%;
+  background-repeat: repeat, no-repeat;
+  background-size: auto, cover;
   width: 100%;
   height: 571px;
   padding: 76.5px 30% 76.5px 80px;
 }
 
 .tab-pane-tab-4 {
-  background-image: url('../images/Research.png');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: linear-gradient(#00000080, #00000080), url('../images/blurred_cave.png');
+  background-position: 0 0, 50%;
+  background-repeat: repeat, no-repeat;
+  background-size: auto, cover;
   width: 100%;
   height: 571px;
   padding: 76.5px 30% 76.5px 80px;
@@ -1556,6 +1559,7 @@
 }
 
 .div-block-43 {
+  max-width: 480px;
   font-family: Inter, sans-serif;
 }
 
@@ -1649,6 +1653,20 @@
   font-size: 32px;
   font-weight: 400;
   line-height: 28.4px;
+}
+
+.paragraph-4xd {
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: Inter, sans-serif;
+  font-size: 16.83px;
+  line-height: 28.4px;
+  display: inline;
+}
+
+.link-block-3, .link-block-4, .link-block-5 {
+  text-decoration: none;
 }
 
 @media screen and (max-width: 991px) {
