@@ -1697,6 +1697,11 @@
   display: flex;
 }
 
+.code-embed {
+  width: 100%;
+  max-width: 635px;
+}
+
 @media screen and (max-width: 991px) {
   .footer {
     flex-flow: column;
