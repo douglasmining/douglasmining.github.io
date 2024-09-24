@@ -1513,6 +1513,10 @@
   grid-column-gap: 32px;
   grid-row-gap: 32px;
   width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .flex-block-23 {
