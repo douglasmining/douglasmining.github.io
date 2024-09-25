@@ -2664,6 +2664,12 @@
     padding-left: 16px;
     padding-right: 16px;
   }
+
+  .div-block-45 {
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
 }
 
 
