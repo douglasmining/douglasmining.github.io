@@ -22,6 +22,24 @@ douglas.lol secure drop.
    subscriber can enter it on the newsletter page to unsubscribe without the
    server ever learning their address.
 
+## Reaching the admin page
+
+`https://douglasmining.com/admin` is a small redirect page in the site repo
+(`admin/index.html`) that forwards to the Worker's `/admin/`. The Worker's
+admin page is self-contained under `/admin/` (its copy of OpenPGP.js lives at
+`/admin/openpgp.min.js`).
+
+If douglasmining.com's DNS records are ever switched to proxied (orange cloud)
+in Cloudflare, the redirect can be replaced by a real route so the URL stays on
+douglasmining.com: add to `wrangler.toml`
+
+```toml
+routes = [{ pattern = "douglasmining.com/admin*", zone_name = "douglasmining.com" }]
+```
+
+and set Cloudflare SSL/TLS mode to **Full** so GitHub Pages keeps working
+behind the proxy. Everything outside `/admin*` still goes to GitHub Pages.
+
 ## Endpoints
 
 | Method | Path                       | Purpose                                   |
