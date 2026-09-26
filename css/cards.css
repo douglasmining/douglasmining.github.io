@@ -1,0 +1,116 @@
+/* Capability cards (home page "Capabilities By Domain" tab menu).
+   Photo + live text label instead of pre-rendered PNGs. */
+
+.capability-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  width: 308px; /* 260px cards + 24px padding each side */
+  flex: none;
+  padding: 32px 24px;
+}
+
+.capability-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-decoration: none;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.capability-card-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.62) saturate(0.85);
+  transform: scale(1);
+  transition: filter 0.25s ease, transform 0.4s ease;
+}
+
+.capability-card-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 26px 16px 10px;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.55) 55%, rgba(0, 0, 0, 0) 100%);
+  transition: background-color 0.2s ease, padding 0.2s ease;
+}
+
+.capability-card:hover,
+.capability-card:focus-visible {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.capability-card:hover .capability-card-photo,
+.capability-card:focus-visible .capability-card-photo {
+  filter: brightness(0.85) saturate(1);
+  transform: scale(1.04);
+}
+
+.capability-card:focus-visible {
+  box-shadow: 0 0 0 3px #0360ae;
+}
+
+/* Selected card: full-brightness photo and the site's blue bar. */
+.capability-card.w--current {
+  border-color: #0360ae;
+}
+
+.capability-card.w--current .capability-card-photo {
+  filter: brightness(1) saturate(1);
+}
+
+.capability-card.w--current .capability-card-label {
+  padding-top: 10px;
+  background: #0360ae;
+}
+
+/* Tablet: the menu drops below the content and the cards line up in a row. */
+@media screen and (max-width: 991px) {
+  .capability-cards {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 960px;
+    padding: 8px 32px 40px;
+  }
+}
+
+/* Phone landscape / small tablet: two by two. */
+@media screen and (max-width: 767px) {
+  .capability-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: 8px 24px 24px;
+  }
+}
+
+/* Phone: tighter grid, slightly smaller label. */
+@media screen and (max-width: 479px) {
+  .capability-cards {
+    gap: 10px;
+    padding: 4px 16px 12px;
+  }
+
+  .capability-card-label {
+    padding: 20px 12px 8px;
+    font-size: 16px;
+  }
+
+  .capability-card.w--current .capability-card-label {
+    padding-top: 8px;
+  }
+}

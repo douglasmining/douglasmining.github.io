@@ -1024,148 +1024,6 @@
   display: flex;
 }
 
-.tabs-menu {
-  grid-column-gap: 24px;
-  grid-row-gap: 24px;
-  flex-flow: column;
-  padding: 32px 24px;
-  display: flex;
-}
-
-.tab-link-tab-1 {
-  background-image: url('../images/webflow-checkbox-bg.svg');
-  background-position: 0 0;
-  background-size: auto;
-}
-
-.tab-link-tab-1.w--current {
-  background-image: url('../images/explore-sm.png');
-  width: 176.4px;
-  height: 111px;
-}
-
-.tab-link-tab-2 {
-  background-image: url('../images/military-ssm.png');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 1px solid #fff;
-  justify-content: center;
-  align-items: flex-end;
-  width: 176.4px;
-  height: 111px;
-  padding: 0;
-  display: flex;
-}
-
-.tab-link-tab-2.w--current {
-  background-image: url('../images/military-sm-active.png');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-style: none;
-  border-color: #000;
-}
-
-.text-block-2 {
-  color: #fff;
-  background-color: #000;
-  width: 100%;
-  margin-top: 0;
-  padding: 8px 16px;
-  font-family: Inter, sans-serif;
-  font-size: 23px;
-  line-height: 30px;
-  display: none;
-}
-
-.tab-link-tab-3 {
-  background-image: url('../images/industrial-ssm.png');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 1px solid #fff;
-  justify-content: center;
-  align-items: flex-end;
-  width: 176.4px;
-  height: 111px;
-  padding: 0;
-  display: flex;
-}
-
-.tab-link-tab-3.w--current {
-  background-image: url('../images/industrial-sm-active.png');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-style: none;
-  border-color: #000;
-}
-
-.tab-link-tab-2-copy {
-  background-image: url('../images/military-sm.png');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 1px #fff;
-  justify-content: center;
-  align-items: flex-end;
-  width: 176.4px;
-  height: 111px;
-  padding: 0;
-  display: flex;
-}
-
-.tab-link-tab-1 {
-  background-image: url('../images/explore-ssm.png');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 1px solid #fff;
-  justify-content: center;
-  align-items: flex-end;
-  width: 176.4px;
-  height: 111px;
-  padding: 0;
-  display: flex;
-}
-
-.tab-link-tab-1.w--current {
-  background-image: url('../images/explore-sm-active.png');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-style: none;
-  border-color: #000;
-}
-
-.tab-link-tab-4 {
-  background-image: url('../images/research-ssm.png');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 1px solid #fff;
-  justify-content: center;
-  align-items: flex-end;
-  width: 176.4px;
-  height: 111px;
-  padding: 0;
-  display: flex;
-}
-
-.tab-link-tab-4.w--current {
-  background-image: url('../images/research-sm-active.png');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 1px #000;
-  justify-content: center;
-  align-items: flex-end;
-  width: 176.4px;
-  height: 111px;
-  display: flex;
-}
-
 .tab-pane-tab-1 {
   background-image: linear-gradient(#00000080, #00000080), url('../images/Features-section1.png');
   background-position: 0 0, 50%;
@@ -1906,11 +1764,6 @@
     flex-flow: column;
   }
 
-  .tabs-menu {
-    flex-flow: row;
-    width: 100%;
-  }
-
   .tab-pane-tab-1 {
     height: auto;
     padding-left: 32px;
@@ -2113,27 +1966,6 @@
 
   .tabs {
     flex-flow: column;
-  }
-
-  .tabs-menu {
-    grid-column-gap: 8px;
-    grid-row-gap: 8px;
-    flex-flow: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-
-  .tab-link-tab-2, .tab-link-tab-3 {
-    width: 176.4px;
-    height: 111px;
-  }
-
-  .tab-link-tab-1 {
-    justify-content: center;
-    align-items: flex-end;
-    width: 176.4px;
-    height: 111px;
   }
 
   .tab-pane-tab-1 {
@@ -2482,29 +2314,6 @@
     flex-flow: column;
   }
 
-  .tabs-menu {
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-    flex-flow: row;
-    justify-content: center;
-    width: 100%;
-    padding: 14px 10px;
-  }
-
-  .tab-link-tab-2 {
-    width: 75.64px;
-    height: 47.59px;
-  }
-
-  .tab-link-tab-2.w--current {
-    width: 75.64px;
-  }
-
-  .tab-link-tab-3, .tab-link-tab-1, .tab-link-tab-1.w--current, .tab-link-tab-4, .tab-link-tab-4.w--current {
-    width: 75.64px;
-    height: 47.59px;
-  }
-
   .tab-pane-tab-1 {
     height: auto;
     padding: 48px 24px;
@@ -2671,5 +2480,4 @@
     align-items: flex-start;
   }
 }
-
 
