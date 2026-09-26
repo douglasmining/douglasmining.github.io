@@ -1,0 +1,32 @@
+/* Copy / open-in-email actions under the email templates
+   (careers, volunteer, technical support, military and industrial requisitions). */
+.template-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+  margin-top: 18px;
+}
+.template-button {
+  display: inline-block;
+  padding: 9px 16px;
+  border: 1px solid #0360ae;
+  border-radius: 0;
+  background: #0360ae;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.template-button:hover { background: #0a74cf; border-color: #0a74cf; }
+.template-button:focus-visible { outline: 2px solid #e9a13a; outline-offset: 2px; }
+.template-button--secondary { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .45); }
+.template-button--secondary:hover { background: rgba(255, 255, 255, .08); border-color: #fff; }
+.template-status { font-family: Inter, sans-serif; font-size: 14px; color: #9be7b3; min-height: 1.5em; }
+.template-status.is-error { color: #ff9a8f; }
