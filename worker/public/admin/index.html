@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Newsletter List</title>
+  <style>
+    :root {
+      --bg: #0b0b0b; --panel: #161616; --line: #2a2a2a; --text: #f2f2f2; --muted: #9a9a9a;
+      --blue: #0360ae; --blue-2: #0a74cf; --orange: #e9a13a; --red: #c0392b; --green: #2e9e5b;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+    header { display: flex; align-items: center; gap: 12px; padding: 16px 24px; border-bottom: 1px solid var(--line); }
+    header h1 { font-size: 18px; margin: 0; font-weight: 600; }
+    header .tag { color: var(--muted); font-size: 13px; }
+    main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 20px; }
+    label { display: block; font-size: 13px; color: var(--muted); margin: 12px 0 6px; }
+    textarea, input[type=password], input[type=file] { width: 100%; background: #0f0f0f; color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; font: 14px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    textarea { min-height: 160px; resize: vertical; }
+    button { cursor: pointer; border: 0; border-radius: 6px; padding: 10px 16px; font: 600 14px Inter, system-ui, sans-serif; color: #fff; background: var(--blue); }
+    button:hover { background: var(--blue-2); }
+    button.ghost { background: transparent; border: 1px solid var(--line); color: var(--text); }
+    button.ghost:hover { background: #222; }
+    button.danger { background: var(--red); }
+    button:disabled { opacity: .5; cursor: default; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 16px; }
+    .msg { margin-top: 12px; font-size: 14px; min-height: 20px; }
+    .msg.err { color: #ff8a80; }
+    .msg.ok { color: #9be7b3; }
+    .stats { display: flex; gap: 24px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+    .stats b { color: var(--text); font-size: 20px; display: block; }
+    table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--muted); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+    td.email { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }
+    .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; }
+    .pill.active { background: #16351f; color: #9be7b3; }
+    .pill.unsubscribed { background: #3a2a10; color: var(--orange); }
+    .pill.locked { background: #3a1a1a; color: #ff8a80; }
+    td .act { display: flex; gap: 6px; }
+    td .act button { padding: 5px 9px; font-size: 12px; }
+    .hidden { display: none; }
+    .note { color: var(--muted); font-size: 13px; }
+    @media (max-width: 640px) { th:nth-child(4), td:nth-child(4) { display: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="10" width="18" height="11" rx="2" stroke="#e9a13a" stroke-width="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3" stroke="#e9a13a" stroke-width="2"/></svg>
+    <h1>Douglas Mining newsletter list</h1>
+    <span class="tag">encrypted at rest, decrypted only in this tab</span>
+  </header>
+
+  <main>
+    <section id="unlock" class="panel">
+      <p>Paste or open your private key. It stays in this browser tab and is never sent anywhere. The server only sees a signature over a one-time challenge.</p>
+      <label for="keyfile">Private key file</label>
+      <input type="file" id="keyfile" accept=".asc,.gpg,.key,.txt">
+      <label for="keytext">…or paste the armored private key</label>
+      <textarea id="keytext" placeholder="-----BEGIN PGP PRIVATE KEY BLOCK-----" spellcheck="false"></textarea>
+      <label for="pass">Passphrase (leave blank if the key has none)</label>
+      <input type="password" id="pass" autocomplete="off">
+      <div class="row">
+        <button id="unlockBtn">Unlock list</button>
+        <span class="note">The key is discarded when you close the tab.</span>
+      </div>
+      <div id="unlockMsg" class="msg"></div>
+    </section>
+
+    <section id="list" class="panel hidden">
+      <div class="stats">
+        <div><b id="nActive">0</b>active</div>
+        <div><b id="nUnsub">0</b>unsubscribed</div>
+        <div><b id="nTotal">0</b>total</div>
+      </div>
+      <div class="row">
+        <button id="copyBtn">Copy active addresses</button>
+        <button id="csvBtn" class="ghost">Download CSV</button>
+        <button id="refreshBtn" class="ghost">Refresh</button>
+        <button id="lockBtn" class="ghost">Lock</button>
+      </div>
+      <div id="listMsg" class="msg"></div>
+      <table>
+        <thead><tr><th>Email</th><th>Status</th><th>Joined</th><th>Ref</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="../openpgp.min.js"></script>
+  <script>
+    (() => {
+      const $ = (id) => document.getElementById(id);
+      const api = location.origin;
+      let privateKey = null;
+      let token = sessionStorage.getItem('nl_token') || '';
+      let items = [];
+
+      const say = (el, text, cls) => { el.textContent = text || ''; el.className = 'msg' + (cls ? ' ' + cls : ''); };
+      const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      const authed = (path, opts = {}) =>
+        fetch(api + path, { ...opts, headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token, ...(opts.headers || {}) } });
+
+      $('keyfile').addEventListener('change', async (e) => {
+        const f = e.target.files[0];
+        if (f) $('keytext').value = await f.text();
+      });
+
+      async function unlock() {
+        const armored = $('keytext').value.trim();
+        if (!armored) return say($('unlockMsg'), 'Paste or choose your private key first.', 'err');
+        $('unlockBtn').disabled = true;
+        say($('unlockMsg'), 'Reading key…');
+        try {
+          let key = await openpgp.readPrivateKey({ armoredKey: armored });
+          if (!key.isDecrypted()) key = await openpgp.decryptKey({ privateKey: key, passphrase: $('pass').value });
+          privateKey = key;
+
+          say($('unlockMsg'), 'Signing challenge…');
+          const { challenge, mac } = await (await fetch(api + '/admin/challenge')).json();
+          const signature = await openpgp.sign({
+            message: await openpgp.createMessage({ text: challenge }),
+            signingKeys: privateKey,
+            detached: true,
+          });
+          const res = await fetch(api + '/admin/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ challenge, mac, signature }),
+          });
+          const out = await res.json();
+          if (!res.ok) throw new Error(out.error || 'Login failed.');
+          token = out.token;
+          sessionStorage.setItem('nl_token', token);
+          $('keytext').value = '';
+          $('pass').value = '';
+          $('keyfile').value = '';
+          say($('unlockMsg'), '');
+          await load();
+        } catch (err) {
+          say($('unlockMsg'), err.message || String(err), 'err');
+        } finally {
+          $('unlockBtn').disabled = false;
+        }
+      }
+
+      async function load() {
+        if (!token || !privateKey) return;
+        say($('listMsg'), 'Loading…');
+        const res = await authed('/admin/subscribers');
+        if (res.status === 401) { lock(); return say($('unlockMsg'), 'Session expired. Unlock again.', 'err'); }
+        const { subscribers } = await res.json();
+        items = [];
+        for (const s of subscribers) {
+          let email = null, error = null;
+          try {
+            const { data } = await openpgp.decrypt({
+              message: await openpgp.readMessage({ armoredMessage: s.ciphertext }),
+              decryptionKeys: privateKey,
+            });
+            const parsed = JSON.parse(data);
+            email = String(parsed.email || '').trim();
+          } catch (e) {
+            error = 'Could not decrypt';
+          }
+          items.push({ ...s, email, error });
+        }
+        render();
+        $('unlock').classList.add('hidden');
+        $('list').classList.remove('hidden');
+        say($('listMsg'), '');
+      }
+
+      function render() {
+        const active = items.filter((i) => i.status === 'active' && i.email);
+        $('nActive').textContent = active.length;
+        $('nUnsub').textContent = items.filter((i) => i.status === 'unsubscribed').length;
+        $('nTotal').textContent = items.length;
+        $('rows').innerHTML = items.map((i) => `
+          <tr data-id="${i.id}">
+            <td class="email">${i.email ? esc(i.email) : '<span class="pill locked">' + esc(i.error) + '</span>'}</td>
+            <td><span class="pill ${i.status}">${i.status}</span></td>
+            <td>${new Date(i.created_at).toLocaleString()}</td>
+            <td>${esc(i.ref)}</td>
+            <td><div class="act">
+              ${i.status === 'active'
+                ? `<button class="ghost" data-act="unsubscribed">Unsubscribe</button>`
+                : `<button class="ghost" data-act="active">Reactivate</button>`}
+              <button class="danger" data-act="delete">Delete</button>
+            </div></td>
+          </tr>`).join('');
+      }
+
+      $('rows').addEventListener('click', async (e) => {
+        const btn = e.target.closest('button[data-act]');
+        if (!btn) return;
+        const tr = btn.closest('tr');
+        const id = tr.dataset.id;
+        const act = btn.dataset.act;
+        if (act === 'delete' && !confirm('Delete this subscriber permanently?')) return;
+        btn.disabled = true;
+        const res = act === 'delete'
+          ? await authed('/admin/subscribers/' + id, { method: 'DELETE' })
+          : await authed('/admin/subscribers/' + id, { method: 'POST', body: JSON.stringify({ status: act }) });
+        if (res.status === 401) { lock(); return say($('unlockMsg'), 'Session expired. Unlock again.', 'err'); }
+        const out = await res.json();
+        if (!out.ok) { btn.disabled = false; return say($('listMsg'), out.error || 'Update failed.', 'err'); }
+        if (act === 'delete') items = items.filter((i) => i.id !== id);
+        else items.find((i) => i.id === id).status = act;
+        render();
+      });
+
+      $('copyBtn').addEventListener('click', async () => {
+        const emails = items.filter((i) => i.status === 'active' && i.email).map((i) => i.email);
+        await navigator.clipboard.writeText(emails.join(', '));
+        say($('listMsg'), `Copied ${emails.length} address${emails.length === 1 ? '' : 'es'}.`, 'ok');
+      });
+
+      $('csvBtn').addEventListener('click', () => {
+        const q = (s) => '"' + String(s ?? '').replace(/"/g, '""') + '"';
+        const csv = ['email,status,joined,ref', ...items.map((i) => [i.email || '', i.status, i.created_at, i.ref].map(q).join(','))].join('\n');
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+        a.download = 'douglas-mining-newsletter-' + new Date().toISOString().slice(0, 10) + '.csv';
+        a.click();
+        URL.revokeObjectURL(a.href);
+      });
+
+      function lock() {
+        privateKey = null;
+        token = '';
+        items = [];
+        sessionStorage.removeItem('nl_token');
+        $('rows').innerHTML = '';
+        $('list').classList.add('hidden');
+        $('unlock').classList.remove('hidden');
+      }
+
+      $('unlockBtn').addEventListener('click', unlock);
+      $('refreshBtn').addEventListener('click', load);
+      $('lockBtn').addEventListener('click', lock);
+      $('pass').addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); });
+      // A leftover session token is useless without the key in memory, so always start locked.
+      lock();
+    })();
+  </script>
+</body>
+</html>

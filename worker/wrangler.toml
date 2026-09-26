@@ -1,0 +1,25 @@
+name = "douglasmining-newsletter"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+# Lets src/index.js import the armored public key as a string.
+rules = [{ type = "Text", globs = ["**/*.asc"] }]
+
+# Static files: the admin page (/admin/) and OpenPGP.js (/openpgp.min.js).
+[assets]
+directory = "public"
+
+[vars]
+ALLOWED_ORIGINS = "https://douglasmining.com,https://www.douglasmining.com,http://localhost:8765"
+NOTIFY_FROM = "newsletter@douglas.lol"
+NOTIFY_TO = "robert@douglasmining.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "douglasmining-newsletter"
+database_id = "1738d3c0-ab7f-44e9-9e70-18801764b7bf"
+
+[[send_email]]
+name = "NOTIFY"
+destination_address = "robert@douglasmining.com"
