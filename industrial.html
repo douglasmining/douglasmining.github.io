@@ -11,6 +11,7 @@
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/douglas-mining.webflow.css" rel="stylesheet" type="text/css">
   <link href="css/cards.css" rel="stylesheet" type="text/css">
+  <link href="css/template.css" rel="stylesheet" type="text/css">
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
@@ -134,7 +135,7 @@
             <h1 class="heading-3">Training Requisition</h1>
           </div>
           <div class="div-block-38">
-            <p class="paragraph-2x">If you are already in possession of a unit or an array of units, please submit the following information to your designated point of contact. If you do not remember your point of contact, or if you do not have a unit, please indicate this clearly in the first line of an email to: </p>
+            <p class="paragraph-2x">Already have a unit? Send the details below to your Douglas Mining point of contact. If you don&#x27;t have a contact yet, or don&#x27;t own a unit, say so in the first line of an email to: </p>
             <p class="paragraph-2x-red">train@douglasmining.com</p>
           </div>
         </div>
@@ -144,14 +145,14 @@
   <section class="section-2">
     <div class="w-layout-vflex flex-block-11">
       <div class="div-block-39">
-        <p class="paragraph-4">Upon receiving your application, you will be issued a:</p>
+        <p class="paragraph-4">When we receive it, you will get:</p>
         <ul role="list" class="list">
-          <li class="paragraph-4">Requisition Number: Unique identifier for tracking the request.</li>
-          <li class="paragraph-4">Date: Date the requisition is received.</li>
-          <li class="paragraph-4">POC: Point-of-contact within Douglas Mining to facilitate the structuring and deployment of one of our field team.</li>
+          <li class="paragraph-4">A requisition number for tracking the request.</li>
+          <li class="paragraph-4">The date it was received.</li>
+          <li class="paragraph-4">A point of contact at Douglas Mining who will plan and deliver the training.</li>
         </ul>
       </div>
-      <p class="paragraph-4x">You must submit all or part of:<br></p>
+      <p class="paragraph-4x">Include what applies. Partial submissions are welcome; we will ask for anything else we need.<br></p>
       <div class="div-block-39">
         <p class="paragraph-4-bold">Requestor Information</p>
         <ul role="list" class="list">
@@ -195,8 +196,8 @@
       <div class="div-block-39">
         <p class="paragraph-4-bold">Approval and Authorization</p>
         <ul role="list" class="list">
-          <li class="paragraph-4">Details of the approval or requestor and any necessary approval and the dates of that approval  (e.g., department head, HR manager).</li>
-          <li class="paragraph-4">Any additional authorization at the time of training required by organizational policy such as waivers, badges, or passes.</li>
+          <li class="paragraph-4">Who approved the request and when (e.g., department head, HR manager).</li>
+          <li class="paragraph-4">Anything your organization requires on the day, such as waivers, badges, or site passes.</li>
         </ul>
       </div>
       <div class="div-block-39">
@@ -213,6 +214,54 @@
           <li class="paragraph-4">Any specific needs or considerations for individual participants (e.g., movement restrictions, accessibility needs).</li>
         </ul>
       </div>
+      <script type="text/plain" id="email-template" data-to="train@douglasmining.com" data-subject="Training Requisition">
+Training Requisition
+
+My Douglas Mining point of contact is: [name, or "none yet"]
+I own a unit: [yes / no]
+
+Requestor Information:
+- Name / department: 
+- Contact (phone, email): 
+- Date of request: 
+- Training program: 
+
+Training Schedule:
+- Proposed date(s) and time(s): 
+- Duration (half-day, full-day, multiple sessions): 
+- Flexibility: 
+
+Training Location:
+- Venue (on-site, off-site, online): 
+- Special requirements (room setup, equipment): 
+
+Required Resources:
+- Materials (manuals, online resources): 
+- Equipment (computers, projectors, internet): 
+- Support services (IT, catering): 
+
+Cost and Budget:
+- Estimated cost: 
+- Budget source: 
+- Expenditure approval, if required: 
+
+Approval and Authorization:
+- Approved by / date: 
+- Waivers, badges, or site passes required: 
+
+Additional or Special Instructions:
+- Post-training reporting (certificates, completion reports): 
+- Prerequisites or special accommodations: 
+
+Participant Details (if known):
+- Participants (names and roles): 
+- Individual needs (movement, accessibility): 
+      </script>
+      <div class="template-actions">
+        <button type="button" class="template-button template-copy">Copy template</button>
+        <a class="template-button template-button--secondary template-mail" href="mailto:train@douglasmining.com?subject=Training%20Requisition&amp;body=Training%20Requisition%0A%0AMy%20Douglas%20Mining%20point%20of%20contact%20is%3A%20%5Bname%2C%20or%20%22none%20yet%22%5D%0AI%20own%20a%20unit%3A%20%5Byes%20/%20no%5D%0A%0ARequestor%20Information%3A%0A-%20Name%20/%20department%3A%20%0A-%20Contact%20%28phone%2C%20email%29%3A%20%0A-%20Date%20of%20request%3A%20%0A-%20Training%20program%3A%20%0A%0ATraining%20Schedule%3A%0A-%20Proposed%20date%28s%29%20and%20time%28s%29%3A%20%0A-%20Duration%20%28half-day%2C%20full-day%2C%20multiple%20sessions%29%3A%20%0A-%20Flexibility%3A%20%0A%0ATraining%20Location%3A%0A-%20Venue%20%28on-site%2C%20off-site%2C%20online%29%3A%20%0A-%20Special%20requirements%20%28room%20setup%2C%20equipment%29%3A%20%0A%0ARequired%20Resources%3A%0A-%20Materials%20%28manuals%2C%20online%20resources%29%3A%20%0A-%20Equipment%20%28computers%2C%20projectors%2C%20internet%29%3A%20%0A-%20Support%20services%20%28IT%2C%20catering%29%3A%20%0A%0ACost%20and%20Budget%3A%0A-%20Estimated%20cost%3A%20%0A-%20Budget%20source%3A%20%0A-%20Expenditure%20approval%2C%20if%20required%3A%20%0A%0AApproval%20and%20Authorization%3A%0A-%20Approved%20by%20/%20date%3A%20%0A-%20Waivers%2C%20badges%2C%20or%20site%20passes%20required%3A%20%0A%0AAdditional%20or%20Special%20Instructions%3A%0A-%20Post-training%20reporting%20%28certificates%2C%20completion%20reports%29%3A%20%0A-%20Prerequisites%20or%20special%20accommodations%3A%20%0A%0AParticipant%20Details%20%28if%20known%29%3A%0A-%20Participants%20%28names%20and%20roles%29%3A%20%0A-%20Individual%20needs%20%28movement%2C%20accessibility%29%3A%20">Open in email</a>
+        <span class="template-status" role="status" aria-live="polite"></span>
+      </div>
     </div>
   </section>
   <section class="section-3">
@@ -223,7 +272,7 @@
             <div class="w-layout-vflex">
               <div class="w-layout-vflex flex-block-17">
                 <p class="paragraph-5">[02] Capabilities By Domain __</p>
-                <p class="paragraph-6">Your mission, is our mission. We can support national security and defense operations detecting and analyzing subsurface anomalies from unexploded ordinance to concealed tunnels; development operations mapping subsurface structures, pipelines, and other critical infrastructures; or pushing scientific exploration and innovation in the fields of geophysics, materials science, or environmental studies. Our magnetometry and resistance surveys provide researchers with the high-resolution data they need to push the boundaries of knowledge. </p>
+                <p class="paragraph-6">Your mission is our mission. We support defense teams detecting and analyzing subsurface anomalies, from unexploded ordnance to concealed tunnels; industrial teams mapping foundations, pipelines, and other buried infrastructure; and researchers in geophysics, materials science, and environmental studies. Our magnetometry and resistivity surveys give all of them the high-resolution data they need.</p>
                 <a href="military.html" class="div-block-40 w-inline-block">
                   <p class="paragraph-6x">Request a Field Test</p><img loading="lazy" src="images/export.svg" alt="">
                 </a>
@@ -242,7 +291,7 @@
             <div class="w-layout-vflex">
               <div class="w-layout-vflex flex-block-17">
                 <p class="paragraph-5">[2.1] Military Applications</p>
-                <p class="paragraph-6">Our magnetometry and resistance survey services are pivotal in enhancing national security and defense operations. Utilizing advanced signal processing software, we specialize in detecting and analyzing subsurface anomalies with precision. Our capabilities allow military forces to identify potential threats, such as unexploded ordnance or concealed tunnels, by separating vital signals from background noise. This enhances situational awareness and operational effectiveness in even the most challenging environments</p>
+                <p class="paragraph-6">Magnetometry and resistivity surveys that find what is under the ground before your people are on top of it: unexploded ordnance, concealed tunnels, buried caches. Our software separates the signal from background noise so a team can act on it in the field, not back at base.</p>
                 <a href="military.html" class="div-block-40 w-inline-block">
                   <p class="paragraph-6x">Request a Field Test</p><img loading="lazy" src="images/export.svg" alt="">
                 </a>
@@ -255,7 +304,7 @@
             <div class="w-layout-vflex">
               <div class="w-layout-vflex flex-block-17">
                 <p class="paragraph-5">[2.2] Industrial Applications</p>
-                <p class="paragraph-6">In the industrial domain, our expertise in magnetometry and resistance surveys plays a critical role in ensuring the safety, efficiency, and sustainability of large-scale projects. We partner with industries to monitor and map subsurface structures, pipelines, and other critical infrastructures. Our cutting-edge software solutions transform raw data into actionable insights, enabling predictive maintenance, risk mitigation, and optimization of resource extraction. By turning noise into clear signals, we help industries minimize downtime and maximize operational efficiency.</p>
+                <p class="paragraph-6">Magnetometry and resistivity surveys that map what is under a site before you build on it, dig through it, or rely on it: foundations, pipelines, voids, and buried utilities. Our software turns raw readings into a picture your engineers can plan against, so problems are found on a screen rather than in the ground.</p>
                 <a href="industrial.html" aria-current="page" class="div-block-40 w-inline-block w--current">
                   <p class="paragraph-6x">Schedule Training</p><img loading="lazy" src="images/export.svg" alt="">
                 </a>
@@ -267,8 +316,8 @@
           <div class="w-layout-vflex flex-block-16">
             <div class="w-layout-vflex flex-block-18">
               <div class="w-layout-vflex flex-block-17">
-                <p class="paragraph-5">[2.3]  Experimental Research and Development</p>
-                <p class="paragraph-6">For experimental and academic customers, our services unlock new possibilities in scientific exploration and innovation. Whether it&#x27;s in the fields of geophysics, materials science, or environmental studies, our magnetometry and resistance surveys provide researchers with the high-resolution data they need to push the boundaries of knowledge. Our specialized software ensures that even the faintest signals are accurately captured and interpreted, facilitating groundbreaking discoveries and the development of new technologies.</p>
+                <p class="paragraph-5">[2.3]  Research &amp; Development</p>
+                <p class="paragraph-6">For researchers in geophysics, materials science, and environmental studies, our surveys deliver the high-resolution data that faint signals demand. The software captures and interprets readings other tools discard, so you can spend your field time on the question rather than the instrument.</p>
                 <a href="experimental.html" class="div-block-40 w-inline-block">
                   <p class="paragraph-6x">Purchase a Research Kit</p><img loading="lazy" src="images/export.svg" alt="">
                 </a>
@@ -333,7 +382,7 @@
           <h1 class="heading">Technical Support </h1><img src="images/export.svg" loading="lazy" alt="">
         </div>
       </a>
-      <a href="tel:(801)252-5155" class="link-block-2 w-inline-block">
+      <a href="tel:+15123600599" class="link-block-2 w-inline-block">
         <div class="w-layout-hflex flex-block-4-orange">
           <h1 class="heading">Emergency Support</h1>
         </div>
@@ -342,6 +391,7 @@
   </section>
   <script src="js/jquery-3.5.1.min.js" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
+  <script src="js/template.js" defer></script>
   <script>document.querySelectorAll(".copyright-year").forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 </body>
 </html>
