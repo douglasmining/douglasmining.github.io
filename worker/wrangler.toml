@@ -3,6 +3,9 @@ main = "src/index.js"
 compatibility_date = "2026-09-01"
 workers_dev = true
 
+# Serve the admin page at douglasmining.com/admin (DNS is proxied through Cloudflare).
+routes = [{ pattern = "douglasmining.com/admin*", zone_name = "douglasmining.com" }]
+
 # Lets src/index.js import the armored public key as a string.
 rules = [{ type = "Text", globs = ["**/*.asc"] }]
 

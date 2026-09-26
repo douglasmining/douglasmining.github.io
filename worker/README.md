@@ -24,21 +24,17 @@ douglas.lol secure drop.
 
 ## Reaching the admin page
 
-`https://douglasmining.com/admin` is a small redirect page in the site repo
-(`admin/index.html`) that forwards to the Worker's `/admin/`. The Worker's
-admin page is self-contained under `/admin/` (its copy of OpenPGP.js lives at
-`/admin/openpgp.min.js`).
+`https://douglasmining.com/admin` is served directly by this Worker. The
+domain's web DNS records (the four apex A records and `www`) are proxied
+through Cloudflare, and `wrangler.toml` declares the route
+`douglasmining.com/admin*`, so only that path reaches the Worker; everything
+else on douglasmining.com still comes from GitHub Pages. The Worker's admin
+page is self-contained under `/admin/` (OpenPGP.js at `/admin/openpgp.min.js`).
 
-If douglasmining.com's DNS records are ever switched to proxied (orange cloud)
-in Cloudflare, the redirect can be replaced by a real route so the URL stays on
-douglasmining.com: add to `wrangler.toml`
-
-```toml
-routes = [{ pattern = "douglasmining.com/admin*", zone_name = "douglasmining.com" }]
-```
-
-and set Cloudflare SSL/TLS mode to **Full** so GitHub Pages keeps working
-behind the proxy. Everything outside `/admin*` still goes to GitHub Pages.
+Cloudflare SSL/TLS mode is Automatic and running **Full**, which GitHub Pages
+needs behind the proxy. If the site ever redirect-loops, check that setting
+first. Turning the proxy off on those five DNS records restores direct
+GitHub Pages serving (and breaks the `/admin` route).
 
 ## Endpoints
 
